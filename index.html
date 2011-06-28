@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+<title>c2c sans Extjs</title>
+
+<!-- Your Slides -->
+<!-- One section is one slide -->
+
+<section style="background:url(images/dommess.png) top center no-repeat">
+    <h1>c2c sans Extjs</h1>
+    <footer>Antoine Abt
+</section>
+
+<section>
+    <h1>Extjs sans c2c?</h1>
+</section>
+
+<section>
+    <ul class="features">
+        <li style="color: black; margin-left: -4px;">= Extjs sans:
+        <li>GeoExt <em>120 Ko</em></li>
+        <li>GeoExt.ux</li>
+        <li>SharedLib.ux …</li>
+    </ul>
+</section>
+
+<section>
+    <ul class="features">
+        <li style="color: black; margin-left: -4px;">Extjs
+        <li>Javascript <em>152 Ko</em></li>
+        <li>Stylesheets <em>15 Ko</em></li>
+        <li>Images <em>entre 10 et 100 Ko</em></li>
+    </ul>
+    <footer>Gzipped
+</section>
+
+<section>
+    <ul class="features">
+        <li style="color: black; margin-left: -4px;">jQuery UI
+        <li>Javascript <em>80 Ko</em></li>
+        <li>Stylesheets <em>12 Ko</em></li>
+        <li>Images <em>&lt;10Ko (sprites)</em></li>
+    </ul>
+    <footer>Gzipped
+</section>
+
+<section>
+    <ul class="features">
+        <li style="color: black; margin-left: -4px;">plain HTML
+        <li>Ai-je vraiment besoin d’un framework pour ce projet?
+    </ul>
+</section>
+
+<section>
+    <mark>2</mark>
+    <h1>code coverage</h1>
+    <footer> Le code chargé est-il éxécuté ?
+</section>
+
+<section>
+     <ul class="features">
+        <li><a
+            href="https://addons.mozilla.org/fr/firefox/addon/code-coverage-v2-for-firebug/">Code
+            coverage for firebug</a>
+        <li><img src="images/codecoverage.png"/>
+    </ul>
+</section>
+
+<section>
+    <ul class="features">
+        <li>ext-base.js <em>50%</em></li>
+        <li>ext-all.js <em>24%</em></li>
+    </ul>
+    <footer> http://map.geoportail.lu (2mins browsing session)
+</section>
+
+<section>
+    <ul class="features">
+        <li>jquery.js <em>47%</em></li>
+        <li>jquery.ui.js <em>43%</em></li>
+    </ul>
+    <footer> http://demo.analytical-labs.com/ (2mins browsing session)
+</section>
+
+<section>
+    <ul class="features">
+        <li style="color: black; margin-left: -4px;">et le code applicatif?</li>
+        <li>app.js <em>25%</em></li>
+        <li>geoadmin.js <em>34%</em></li>
+    </ul>
+    <footer> http://map.geoportail.lu (2mins browsing session)
+</section>
+
+<section>
+    <ul class="features">
+        <li style="color: black; margin-left: -4px;">Pistes d’amélioration
+        <li>limiter l'héritage
+        <li>defered loading
+    </ul>
+</section>
+
+<section>
+    <mark>3</mark>
+    <h1>defered loading</h1>
+    <footer> Ne charger que ce qui est nécéssaire
+</section>
+
+<section>
+    <pre>$('smallmap').addEventListener('click', function(){
+    require(['OpenLayers.js'], function(){
+        var map = new OpenLayers.Map();
+        (…)
+    });
+}); </pre>
+    <footer>http://tonio.biz/contact
+</section>
+
+<section>
+    <mark>4</mark>
+    <h1>rendering</h1>
+    <footer> Commencer le rendu le plus tôt possible
+</section>
+
+<section>
+    <ul class="features">
+        <li>load != render
+        <li><a href="http://www.webpagetest.org">www.webpagetest.org</a>
+    </ul>
+</section>
+
+<section>
+    <ul class="features">
+        <li><img src="images/test_google.png"/></li>
+        <li><img src="images/test_lux.png"/></li>
+    </ul>
+    <footer>map.geoportail.lu vs maps.google.com
+</section>
+
+<section>
+    <h1>Merci</h1>
+</section>
+
+
+
+<!-- Your Style -->
+<!-- Define the style of you presentation -->
+
+<!-- Maybe a font from http://www.google.com/webfonts ? -->
+<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+
+<style>
+  /* Transition effect */
+  section {
+      -moz-transition: top 400ms linear 0s;
+      -webkit-transition: top 400ms linear 0s;
+      -o-transition: top 400ms linear 0s;
+      -ms-transition: top 400ms linear 0s;
+      transition: top 400ms linear 0s;
+  }
+  section { top: -150%; }
+  section[aria-selected] { top: 0; }
+  section[aria-selected] ~ section { top: +150% }
+
+  @font-face { src: url(BebasNeue.otf); font-family: 'bebas'; }
+  a { color: inherit; }
+  a:hover {text-decoration: underline;}
+  body { font-family: 'bebas'; }
+  html { background-color: black; }
+  body { background-color: white; }
+  section > * { position: absolute; }
+
+  mark {
+    position: absolute;
+    top: 250px; left: 0;
+    display: block;
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 90px;
+  }
+
+  .features {
+      top: 200px;
+      left: 150px;
+      color: #C01801;
+      font-size: 70px;
+      list-style: none;
+  }
+
+  .features li {
+      position: relative;
+  }
+  .features em {
+      color: #ccc;
+      font-style: normal;
+      font-size: 40px;
+      display: inline-block;
+      text-align: right;
+      position: absolute;
+      top: 27px; right: -330px;
+  }
+
+  /*
+  section:first-of-type h1 {
+    font-size: 130px;
+    padding-top: 10px;
+    font-weight: normal;
+    top: 10px;
+    left: 10px;
+    width: 780px;
+    text-align: center;
+    line-height: 160px;
+  }
+  section:first-of-type h2 {
+      font-size: 63px;
+  }
+*/
+  .site, h1 {
+      top: 0;
+      left: 150px;
+      font-size: 75px;
+      line-height: 600px;
+      vertical-align: middle;
+  }
+  h1 > em {
+      display: block;
+      text-align: left;
+      margin-top: -40px;
+      margin-left: 16px;
+      font-size: 40px;
+      line-height: 40px;
+      font-style: normal;
+  }
+
+  footer {
+    display: block;
+    text-align: right;
+    color: #C01801;
+    font-style: normal;
+    font-size: 30px;
+    bottom: 0; right: 10px;
+  }
+
+  img {
+      top: 150px;
+      left: 8px;
+      width: 500px;
+  }
+
+  .fullscreen > img,
+  .fullscreen > video {
+      top: 0px;
+      right: 0px;
+      width: 800px;
+      height: 600px;
+      display: block;
+  }
+  .fullscreen {
+      background-color: black;
+  }
+
+
+  #ten {
+    color: #C01801;
+    font-size: 150px;
+    vertical-align: bottom;
+    letter-spacing: -15px;
+    display: block;
+    position: absolute;;
+    left: 0px;
+    bottom: 25px;
+  }
+
+  h2 {
+      top: 190px;
+      font-size: 65px;
+      line-height: 60px;
+      padding-left: 130px;
+  }
+  pre {
+      top         : 3em;
+      left        : 3em;
+      font-size   : 20px;
+      font-family : 'Meslo LG M', Monaco, monospace;
+  }
+</style>
+
+<!-- {{{{ *****************  DZSlides CORE 2.0b1 *************************** -->
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+<!-- *********************************************************************** -->
+
+<!-- This block of code is not supposed to be edited, but if you want to change the behavior of the slides, feel free to hack it ;) -->
+
+<!-- Default Style -->
+<style>
+  * { margin: 0; padding: 0; }
+  details {
+      position:absolute;
+      bottom: 1em;
+      right: 1em;
+  }
+  
+
+  body {
+    width: 800px; height: 600px;
+    margin-left: -400px; margin-top: -300px;
+    position: absolute; top: 50%; left: 50%;
+    overflow: hidden;
+  }
+  section {
+    position: absolute;
+    pointer-events: none;
+    width: 100%; height: 100%;
+  }
+  section[aria-selected] { pointer-events: auto;}
+  body {display: none}
+  body.loaded {display: block}
+</style>
+
+<script>
+  var friendWindows = [];
+  var idx = 1;
+  var slides;
+
+  /* main() */
+
+  window.onload = function() {
+    slides = document.querySelectorAll("body > section");
+    onhashchange();
+    setSlide();
+    document.body.className = "loaded";
+    onresize();
+  }
+
+  /* Handle keys */
+
+  window.onkeydown = function(e) {
+    // Don't intercept keyboard shortcuts
+    if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+      return;
+    }
+    if ( e.keyCode == 37 // left arrow
+      || e.keyCode == 33 // page up
+    ) {
+      e.preventDefault();
+      back();
+    }
+    if ( e.keyCode == 39 // right arrow
+      || e.keyCode == 34 // page down
+    ) {
+      e.preventDefault();
+      forward();
+    }
+
+    if ( e.keyCode == 32) { // space
+        e.preventDefault();
+        toggleContent();
+    }
+  }
+
+  /* Adapt the size of the slides to the window */
+
+  window.onresize = function() {
+    var sx = document.body.clientWidth / window.innerWidth;
+    var sy = document.body.clientHeight / window.innerHeight;
+    var transform = "scale(" + (1/Math.max(sx, sy)) + ")";
+    document.body.style.MozTransform = transform;
+    document.body.style.WebkitTransform = transform;
+    document.body.style.OTransform = transform;
+    document.body.style.msTransform = transform;
+    document.body.style.transform = transform;
+  }
+  function getDetails(idx) {
+    var s = document.querySelector("section:nth-of-type("+ idx +")");
+    var d = s.querySelector("details");
+    return d?d.innerHTML:"";
+  }
+  window.onmessage = function(e) {
+    msg = e.data;
+    win = e.source;
+    if (msg === "register") {
+      friendWindows.push(win);
+      win.postMessage(JSON.stringify({method: "registered", title: document.title, count: slides.length}), document.location);
+      win.postMessage(JSON.stringify({method: "newslide", details: getDetails(idx), idx: idx}), document.location);
+      return;
+    }
+    if (msg === "back") back();
+    if (msg === "forward") forward();
+    if (msg === "toggleContent") toggleContent();
+    // setSlide(42)
+    var r = /setSlide\((\d+)\)/.exec(msg);
+    if (r) {
+        idx = r[1];
+        setSlide();
+    }
+  }
+
+  /* If a Video is present in this new slide, play it.
+     If a Video is present in the previous slide, stop it. */
+
+  function toggleContent() {
+    var s = document.querySelector("section[aria-selected]");
+    if (s) {
+        var video = s.querySelector("video");
+        if (video) {
+            if (video.ended || video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+    }
+  }
+
+  /* If the user change the slide number in the URL bar, jump
+     to this slide. */
+
+  window.onhashchange = function(e) {
+    var newidx = ~~window.location.hash.split("#")[1];
+    if (!newidx) newidx = 1;
+    if (newidx == idx) return;
+    idx = newidx;
+    setSlide();
+  }
+
+  /* Slide controls */
+
+  function back() {
+    if (idx == 1) return;
+    idx--;
+    setSlide();
+  }
+  function forward() {
+    if (idx >= slides.length) return;
+    idx++;
+    setSlide();
+  }
+  function setSlide() {
+    var old = document.querySelector("section[aria-selected]");
+    var next = document.querySelector("section:nth-of-type("+ idx +")");
+    if (old) {
+      old.removeAttribute("aria-selected");
+      var video = old.querySelector("video");
+      if (video) { video.pause(); }
+    }
+    if (next) {
+      next.setAttribute("aria-selected", "true");
+      var video = next.querySelector("video");
+      if (video) { video.play(); }
+    } else {
+      console.warn("No such slide: " + idx);
+      idx = 0;
+      for (var i = 0; i < slides.length; i++) {
+          if (slides[i].hasAttribute("aria-selected")) {
+              idx = i + 1;
+          }
+      }
+    }
+    window.location.hash = idx;
+    for (var i = 0; i < friendWindows.length; i++) {
+        friendWindows[i].postMessage(JSON.stringify({method: "newslide", details: getDetails(idx), idx: idx}), document.location);
+    }
+  }
+</script>
+<!-- vim: set fdm=marker: }}} -->
