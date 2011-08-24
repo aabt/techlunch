@@ -4,14 +4,35 @@
         <meta charset="utf-8">
         <title>example</title>
 
+        <style>
+            .olMapViewport {
+                border-radius: 3px;
+            }
+        </style>
         <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.0.min.css">
     </head>
 
     <body>
-        <div class="popover left" style="display:block;left:550px;top:300px">
+        <div id="modal" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:1010;background-color: rgba(0,0,0,0.4); border: none; padding: 40px;" class="well">
+            <!-- Modal -->
+            <div style="position: relative; top: auto; left: auto; margin: 0 auto; z-index: 1" class="modal">
+                <div class="modal-header">
+                    <h3>Et oui!</h3>
+                    <a onclick="modal.hide()" class="close" href="#">×</a>
+                </div>
+                <div class="modal-body">
+                    <p>Ça marche aussi sous IE (non, pas 6)</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn primary" onclick="modal.hide()" href="#">Primary</a>
+                    <a class="btn secondary"  onclick="modal.hide() "href="#">Secondary</a>
+                </div>
+            </div>
+        </div>
+        <div id="popup" class="popover left" style="left:550px;top:300px">
             <div class="arrow"></div>
             <div class="inner">
-                <h3 class="title">Popover Title</h3>
+                <h3 class="title" onclick="modal.show()" >Popover Title</h3>
                 <div class="content">
                     <p>Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
                 </div>
@@ -43,11 +64,16 @@
                             </div>
                         </div>
                         <p style="text-align:right;margin-bottom:0;">
-                        <a class="btn large primary" href="#">Rechercher</a>
+                        <a class="btn large primary" onclick="show()" href="#">Rechercher</a>
                         </p>
                     </div>
                 </form>
-                <table class="zebra-striped">
+                <div class="alert-message warning" id="static">
+                    <a href="#" class="close"
+                        onclick="document.getElementById('static').style.display='none';">×</a>
+                    <p><strong>Attention</strong>  Ceci n’est qu’un site statique</p>
+                </div>
+                <table id="table" style="display:none" class="zebra-striped">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -123,25 +149,45 @@
         </div>
         <script src="OpenLayers.js"></script>
         <script>
-            var o = OpenLayers;
-            var map = new o.Map({
-            div: 'map',
-            theme: null,
-            controls: []
-            });
-            map.addLayer(new o.Layer.XYZ('OSM',
-            [ 
-            'http://a.tile.openstreetmap.org/${z}/${x}/${y}.png',
-            'http://b.tile.openstreetmap.org/${z}/${x}/${y}.png',
-            'http://c.tile.openstreetmap.org/${z}/${x}/${y}.png'
-            ],
-            { 
-            buffer: 0,
-            sphericalMercator: true
+            window.onload = function() {
+                var o = OpenLayers;
+                var map = new o.Map({
+                    div: 'map',
+                    theme: null,
+                    controls: []
+                });
+                map.addLayer(new o.Layer.XYZ('OSM',
+                [ 
+                'http://a.tile.openstreetmap.org/${z}/${x}/${y}.png',
+                'http://b.tile.openstreetmap.org/${z}/${x}/${y}.png',
+                'http://c.tile.openstreetmap.org/${z}/${x}/${y}.png'
+                ],
+                { 
+                    buffer: 0,
+                    sphericalMercator: true
+                }
+                ));
+                map.addControl(new o.Control.Navigation());
+                map.setCenter(new o.LonLat(654430,5716037), 13);
+                map.events.register('movestart', null, function() {
+                    document.getElementById('popup').style.display = 'none';
+                });
             }
-            ));
-            map.addControl(new o.Control.Navigation());
-            map.setCenter(new o.LonLat(654430,5716037), 13);
+            function show() {
+                document.getElementById('table').style.display = 'table';
+            }
+            var trs = document.querySelectorAll('tr');
+            for (var i=0,l=trs.length ; i<l ; i++) {
+                trs[i].onclick = function showPopup() {
+                    document.getElementById('popup').style.display = 'block';
+                }
+            };
+            var modal = {
+                show: function()
+                {document.getElementById('modal').style.display = 'block';},
+                hide: function()
+                {document.getElementById('modal').style.display = 'none';}
+            };
         </script>
     </body>
 </html>
