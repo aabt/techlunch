@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>example</title>
+
+        <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.0.min.css">
+    </head>
+
+    <body>
+        <div class="popover left" style="display:block;left:550px;top:300px">
+            <div class="arrow"></div>
+            <div class="inner">
+                <h3 class="title">Popover Title</h3>
+                <div class="content">
+                    <p>Etiam porta sem malesuada magna mollis euismod. Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="sidebar" style="width:400px;padding-top:20px">
+                <form>
+                    <div class="well">
+                        <div class="clearfix">
+                            <label for="prependedInput">Email de l’utilisateur</label>
+                            <div class="input">
+                                <div class="input-prepend">
+                                    <span class="add-on">@</span>
+                                    <input type="text" size="16" name="prependedInput" id="prependedInput" class="medium">
+                                </div>
+                            </div>
+                        </div> <!-- /clearfix -->
+                        <div class="clearfix">
+                            <label for="">Type</label>
+                            <div class="input">
+                                <select>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p style="text-align:right;margin-bottom:0;">
+                        <a class="btn large primary" href="#">Rechercher</a>
+                        </p>
+                    </div>
+                </form>
+                <table class="zebra-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Language</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Some</td>
+                            <td>One</td>
+                            <td>English</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Joe</td>
+                            <td>Sixpack</td>
+                            <td>English</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Stu</td>
+                            <td>Dent</td>
+                            <td>Code</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Some</td>
+                            <td>One</td>
+                            <td>English</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Joe</td>
+                            <td>Sixpack</td>
+                            <td>English</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Stu</td>
+                            <td>Dent</td>
+                            <td>Code</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>Some</td>
+                            <td>One</td>
+                            <td>English</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Joe</td>
+                            <td>Sixpack</td>
+                            <td>English</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Stu</td>
+                            <td>Dent</td>
+                            <td>Code</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="content" style="margin-left:420px;padding-top:20px;">
+                <div class="well" style="width:95%;height:500px;position:relative">
+                    <div id="map" style="width:100%;height:100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="OpenLayers.js"></script>
+        <script>
+            var o = OpenLayers;
+            var map = new o.Map({
+            div: 'map',
+            theme: null,
+            controls: []
+            });
+            map.addLayer(new o.Layer.XYZ('OSM',
+            [ 
+            'http://a.tile.openstreetmap.org/${z}/${x}/${y}.png',
+            'http://b.tile.openstreetmap.org/${z}/${x}/${y}.png',
+            'http://c.tile.openstreetmap.org/${z}/${x}/${y}.png'
+            ],
+            { 
+            buffer: 0,
+            sphericalMercator: true
+            }
+            ));
+            map.addControl(new o.Control.Navigation());
+            map.setCenter(new o.LonLat(654430,5716037), 13);
+        </script>
+    </body>
+</html>
