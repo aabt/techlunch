@@ -1,0 +1,161 @@
+
+  /* Transition effect */
+  section {
+      -moz-transition: top 400ms linear 0s;
+      -webkit-transition: top 400ms linear 0s;
+      -o-transition: top 400ms linear 0s;
+      -ms-transition: top 400ms linear 0s;
+      transition: top 400ms linear 0s;
+  }
+  section { top: -150%; }
+  section[aria-selected] { top: 0; }
+  section[aria-selected] ~ section { top: +150% }
+
+  @font-face { src: url(BebasNeue.otf); font-family: 'bebas'; }
+  a { color: inherit; }
+  a:hover {text-decoration: underline;}
+  body { font-family: 'bebas'; }
+  html { background-color: black; }
+  body { background-color: white; }
+  section > * { position: absolute; }
+
+  mark {
+    position: absolute;
+    top: 250px; left: 0;
+    display: block;
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 90px;
+  }
+
+  .features {
+      top: 200px;
+      left: 150px;
+      color: #C01801;
+      font-size: 70px;
+      list-style: none;
+  }
+
+  .features li {
+      position: relative;
+  }
+  .features em {
+      color: #ccc;
+      font-style: normal;
+      font-size: 40px;
+      display: inline-block;
+      text-align: left;
+      width: 200px;
+      position: absolute;
+      top: 27px; 
+      left: 490px;
+  }
+
+  /*
+  section:first-of-type h1 {
+    font-size: 130px;
+    padding-top: 10px;
+    font-weight: normal;
+    top: 10px;
+    left: 10px;
+    width: 780px;
+    text-align: center;
+    line-height: 160px;
+  }
+  section:first-of-type h2 {
+      font-size: 63px;
+  }
+*/
+  .site, h1 {
+      top: 0;
+      left: 150px;
+      font-size: 75px;
+      line-height: 600px;
+      vertical-align: middle;
+  }
+  h1 > em {
+      display: block;
+      text-align: left;
+      margin-top: -40px;
+      margin-left: 16px;
+      font-size: 40px;
+      line-height: 40px;
+      font-style: normal;
+  }
+
+  footer {
+    display: block;
+    text-align: right;
+    color: #C01801;
+    font-style: normal;
+    font-size: 30px;
+    bottom: 0; right: 10px;
+  }
+
+  img {
+      top: 150px;
+      left: 8px;
+      width: 500px;
+  }
+
+  .fullscreen > img,
+  .fullscreen > video {
+      top: 0px;
+      right: 0px;
+      width: 800px;
+      height: 600px;
+      display: block;
+  }
+  .fullscreen {
+      background-color: black;
+  }
+
+
+  #ten {
+    color: #C01801;
+    font-size: 150px;
+    vertical-align: bottom;
+    letter-spacing: -15px;
+    display: block;
+    position: absolute;;
+    left: 0px;
+    bottom: 25px;
+  }
+
+  h2 {
+      top: 190px;
+      font-size: 65px;
+      line-height: 60px;
+      padding-left: 130px;
+  }
+  pre {
+      top         : 3em;
+      left        : 3em;
+      font-size   : 20px;
+      font-family : 'Meslo LG M', Monaco, monospace;
+  }
+  * { margin: 0; padding: 0; }
+  details {
+      position:absolute;
+      bottom: 1em;
+      right: 1em;
+  }
+  
+
+  body {
+    width: 800px; height: 600px;
+    margin-left: -400px; margin-top: -300px;
+    position: absolute; top: 50%; left: 50%;
+    overflow: hidden;
+  }
+  section {
+    position: absolute;
+    pointer-events: none;
+    width: 100%; height: 100%;
+  }
+  section[aria-selected] { pointer-events: auto;}
+  body {display: none}
+  body.loaded {display: block}
